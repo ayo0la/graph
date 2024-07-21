@@ -1,0 +1,61 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# EDTA Titration Results Data
+titrations = ['Titration 1', 'Titration 2', 'Titration 3']
+edta_molarity = [0.004405, 0.009091, 0.009434]
+average_molarity = 0.007643
+
+# Plotting EDTA Titration Results
+plt.figure(figsize=(10, 5))
+plt.plot(titrations, edta_molarity, marker='o', linestyle='-', color='b', label='EDTA Molarity')
+plt.axhline(y=average_molarity, color='r', linestyle='--', label=f'Average Molarity = {average_molarity:.6f}')
+plt.title('EDTA Titration Results')
+plt.xlabel('Titrations')
+plt.ylabel('EDTA Molarity (M)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Total Water Hardness Results Data
+samples = ['Water Sample 1', 'Water Sample 2']
+total_hardness = [17.195, 17.877]
+average_hardness = 17.536
+
+# Plotting Total Water Hardness Results
+plt.figure(figsize=(10, 5))
+plt.bar(samples, total_hardness, color='c', label='Total Hardness')
+plt.axhline(y=average_hardness, color='r', linestyle='--', label=f'Average Hardness = {average_hardness:.3f}')
+plt.title('Total Water Hardness Results')
+plt.xlabel('Water Samples')
+plt.ylabel('Total Hardness (mg/L as CaCO₃)')
+plt.legend()
+plt.grid(axis='y')
+plt.show()
+
+# Magnesium Concentration Data
+water_samples = ['Water Sample 1', 'Water Sample 2', 'Water Sample 3']
+magnesium_hardness = [-52.464, -407.464, -192.464]
+magnesium_concentration = [-12.592, -97.791, -46.191]
+average_magnesium_hardness = -226.809
+average_magnesium_concentration = -54.434
+
+# Plotting Magnesium Concentration
+fig, ax1 = plt.subplots(figsize=(10, 5))
+
+ax2 = ax1.twinx()
+ax1.bar(water_samples, magnesium_hardness, color='g', label='Magnesium Hardness (mg/L as CaCO₃)')
+ax2.plot(water_samples, magnesium_concentration, color='b', marker='o', linestyle='-', label='Magnesium Concentration (mg/L as Mg²⁺)')
+
+ax1.axhline(y=average_magnesium_hardness, color='r', linestyle='--', label=f'Average Magnesium Hardness = {average_magnesium_hardness:.3f}')
+ax2.axhline(y=average_magnesium_concentration, color='m', linestyle='--', label=f'Average Magnesium Concentration = {average_magnesium_concentration:.3f}')
+
+ax1.set_xlabel('Water Samples')
+ax1.set_ylabel('Magnesium Hardness (mg/L as CaCO₃)', color='g')
+ax2.set_ylabel('Magnesium Concentration (mg/L as Mg²⁺)', color='b')
+
+fig.suptitle('Magnesium Concentration')
+ax1.legend(loc='upper left')
+ax2.legend(loc='upper right')
+
+plt.show()
